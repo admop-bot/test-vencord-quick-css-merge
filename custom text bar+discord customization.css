@@ -1,8 +1,27 @@
+/* ========== From aushevahmad (custom-bar-prompt.css) ========== */
+
+/* Custom chat bar input text */
+
+/* Hide existing text */
+.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017 {
+    visibility: hidden;
+}
+
+/* Add custom text */
+.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017::before {
+    visibility: visible;
+    content: var(--prompt-text); /* Override with your own text using --prompt-text */
+    /* Example:
+    content: "i like snow cones";
+    */
+}
+
+/* ========== From abbie (import.css) ========== */
+
 @container style(--\\--compact-title-bar: true) {
 	body {
 		--custom-app-top-bar-height: 28px;
 	}
-
 	div[data-windows="true"][class*="bar_"] {
 		--space-32: var(--custom-app-top-bar-height);
 	}
@@ -16,7 +35,6 @@
 				padding: 10px 16px;
 			}
 		}
-
 		& > [class*="wrapper__"] {
 			padding: 10px;
 			& > div {
@@ -24,7 +42,6 @@
 				margin-right: 0;
 			}
 		}
-
 		div[class*="textArea_"] + div[class*="buttons_"] {
 			gap: 0;
 		}
@@ -36,10 +53,8 @@
 		div[role="group"] {
 			padding: 0;
 		}
-
 		div:is([role="menuitem"],[role="menuitemcheckbox"]), div[class*="hideInteraction_"] {
 			padding: 4px;
-
 			&:not([class*="colorDanger_"], :hover) div[class*="label_"] {
 				color: var(--interactive-normal);
 			}
@@ -55,31 +70,25 @@
 		border: none !important;
 		width: 100% !important;
 		background-color: color-mix(in oklab, var(--background-tertiary), #000 11%) !important;
-
 		& > [class*="wrapper_"] > [class*="container_"] {
 			--space-xs: 6px;
 		}
 	}
-
 	nav[class*="privateChannels__"] > div[class*="scroller__"], nav[aria-label="Servers sidebar"], nav[class*="guilds_"] {
 		margin-bottom: calc(var(--custom-app-panels-height, 0)) !important;
 	}
-
 	[class*="sidebarList_"] #channels {
 		margin-bottom: 0;
 	}
-
 	[class*="activityPanel_"] {
 		background-color: transparent;
 		padding-top: 4px;
 		padding-bottom: 4px;
 	}
-
 	[class*="rtcConnectionStatusWrapper__"] {
 		[class*="labelWrapper__"] [class*="rtcConnectionStatusLabel__"] > div > div {
 			font-size: 100%;
 		}
-
 		[class*="rtcConnectionStatus__"] + a > div > div {
 			font-size: 100%;
 		}
@@ -91,7 +100,6 @@
 		li[class*="containerDefault_"]:not([class*="containerDefault__"]) a[class*="link__"] {
 			--radius-sm: 5px;
 		}
-
 		li[class*="containerDefault__"] h3:is([class*="name__"], [class*="header__"]) > div {
 			font-size: 95%;
 			font-weight: 600;
@@ -107,7 +115,7 @@
 	}
 }
 
-/* --------------------------------------- */
+/* ---- Hiding UI Elements ---- */
 
 @container style(--\\--hide-nameplates: true) {
 	div[class*="childContainer__"][class*="nameplated__"] {
@@ -116,11 +124,9 @@
 			display: none;
 		}
 	}
-
 	li[class*="channel__"] > div[class*="interactive__"] > div[class*="container__"]:is([class*="fadeIn__"], :has(> div[class*="videoContainer__"])) {
 		display: none;
 	}
-
 	[class*="closeButtonPlated__"] {
 		opacity: 0.7;
 		[class*="innerCloseButtonPlated"] {
@@ -163,7 +169,6 @@
 	h3[class*="membersGroup"]:has(svg path[d^="M10.56 1.1c"]) {
 		display: none;
 	}
-
 	:is(div[aria-label="Members"], div[class*="members_"] > div[role="list"][aria-label]) > div:not([class], [role], [aria-label], [aria-role]):has(> div > div[class*="openOnHover"]) {
 		display: none;
 	}
@@ -248,7 +253,6 @@
 }
 
 @container style(--\\--hide-cluttery-badges: true) {
-	/* TODO: make selectors language independent */
 	[aria-label="User Badges"] {
 		[aria-label="Active Developer"],
 		[aria-label="Completed a Quest"],
@@ -259,7 +263,7 @@
 	}
 }
 
-/* --------------------------------------- */
+/* ---- UI Polish ---- */
 
 @container style(--\\--darker-scrollbar: true) {
 	body, [class*="scroller__"] {
@@ -282,31 +286,15 @@
 	svg[class*="ownerIcon__"] {
 		top: -1px;
 	}
-
 	svg[class*="flowerStar__"] path[d^="m16 7.6c0"] {
 		transform: translateY(-0.5px);
 	}
-
 	[class*="guildDropdown_"] svg path[d^="M5.3 9.3a1"] {
 		transform: translateY(2px);
 	}
 }
 
-/* custom chat bar input text  */
-
-/* hide existing text */
-.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017 {
-    visibility: hidden;
-}
-
-/* add custom text */
-.placeholder__1b31f.slateTextArea_ec4baf.fontSize16Padding__74017::before {
-    visibility: visible;
-    content: var(--prompt-text); /* replace var() with your desired text (in quotes) */
-    
-    /* for example:
-    
-    content: "i like snow cones";
-    
-    */
+/* ========== Customize Prompt Text ========== */
+:root {
+  --prompt-text: "be silly :3"; /* You can change this! */
 }
